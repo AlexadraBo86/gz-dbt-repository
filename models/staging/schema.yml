@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: income_tax_2024
+    description: "Staging model for income tax rate and GDP per capita in 2024"
+    columns:
+      - name: Country
+        description: "Country name"
+      - name: Year
+        description: "2024"
+      - name: Income_tax_rate
+        description: "Income tax rate as a float (ex: 0.37 for 37%)"
+      - name: gdp_per_capita_usd_2023
+        description: "GDP per capita in USD for the year 2024"

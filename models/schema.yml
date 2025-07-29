@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: Data_cleaned
+    description: final tables
+    tables:
+      - name: Crime_safety_by_city_cleaned_copy

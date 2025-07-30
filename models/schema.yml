@@ -5,3 +5,16 @@ sources:
     description: final tables
     tables:
       - name: Crime_safety_by_city_cleaned_copy
+      - name: Avg_monthly_bills_basic_utilities_cleaned
+      - name: Cost_of_living_by_city_cleaned
+      - name: Healthcare_index_by_city_cleaned
+      - name: Life_expectancy_at_birth_by_country_cleaned
+      - name: Linguistic_diversity_index_by_country_cleaned
+      - name: Pollution_index_by_city_cleaned
+      - name: Traffic_index_by_city_cleaned
+      - name: access_to_internet_country_cleaned
+      - name: corruption_estimated_cleaned
+      - name: gdp_per_capita_cleaned
+      - name: income_tax_cleaned
+      - name: mesure_bonheur_cleaned
+      - name: temperature_ville_cleaned

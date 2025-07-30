@@ -19,6 +19,7 @@ corruption AS (
 crime_safety AS (
     SELECT
         country,
+        city,
         crime_index,
         safety_index
     FROM {{ ref('stg_Data_cleaned__Crime_safety_index_final_table') }}
@@ -26,6 +27,7 @@ crime_safety AS (
 
 SELECT
     idh.country,
+    crime_safety.city,
     idh.hdi,
     idh.ihdi,
     idh.overall_loss_due_to_inequality_perc,
@@ -33,8 +35,8 @@ SELECT
     crime_safety.crime_index,
     crime_safety.safety_index
 
-FROM idh
+FROM crime_safety
+LEFT JOIN idh
+    ON crime_safety.country = idh.country
 LEFT JOIN corruption
-    ON idh.country = corruption.country
-LEFT JOIN crime_safety
-    ON idh.country = crime_safety.country
+    ON crime_safety.country = corruption.country

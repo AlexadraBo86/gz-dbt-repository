@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('Data_cleaned', 'Cost_of_living_by_city_cleaned') }}
+    select * from {{ source('Data_cleaned', 'Cost_of_living_by_city_cleaned_Otmane') }}
 
 ),
 
@@ -10,7 +10,6 @@ renamed as (
 
     select
         country,
-        rank_rank,
         city,
         cost_of_living_index,
         rent_index,

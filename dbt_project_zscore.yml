@@ -1,0 +1,14 @@
+name: Z-score-comparateur-international-de-niveau-de-vie
+version: '1.0'
+config-version: 2
+
+profile: gz_dbt_project_zscore
+
+models:
+  gz_dbt_project_final:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

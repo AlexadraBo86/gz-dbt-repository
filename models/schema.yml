@@ -4,7 +4,6 @@ sources:
   - name: Data_cleaned
     description: final tables
     tables:
-      - name: Crime_safety_by_city_cleaned_copy
       - name: Avg_monthly_bills_basic_utilities_cleaned
       - name: Cost_of_living_by_city_cleaned
       - name: Healthcare_index_by_city_cleaned

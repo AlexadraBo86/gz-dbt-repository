@@ -12,7 +12,7 @@ renamed as (
         country,
         hdi,
         ihdi,
-        overall_loss_corrected
+        overall_loss_corrected AS overall_loss_due_to_inequality_perc
 
     from source
 

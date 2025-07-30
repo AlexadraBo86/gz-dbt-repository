@@ -10,7 +10,7 @@ renamed as (
 
     select
         country,
-        2024
+        `2024`
 
     from source
 

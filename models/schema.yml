@@ -8,3 +8,6 @@ sources:
       - name: IDH_by_country_final_table
       - name: Cost_of_living_by_city_cleaned_Otmane
       - name: corruption_estimated_final_table
+      - name: mesure_bonheur_country_2024_clean
+
+

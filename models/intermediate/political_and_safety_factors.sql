@@ -43,7 +43,7 @@ bonheur AS (
 )
 
 SELECT
-    idh.country,
+    crime_safety.country,
     crime_safety.city,
     
     -- Indicateurs IDH
@@ -75,5 +75,4 @@ LEFT JOIN idh
 LEFT JOIN corruption
     ON crime_safety.country = corruption.country
 LEFT JOIN bonheur
-    ON crime_safety.country = bonheur.country
-    AND crime_safety.city = bonheur.city
+    ON crime_safety.city = bonheur.city

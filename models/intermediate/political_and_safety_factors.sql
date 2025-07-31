@@ -22,7 +22,7 @@ crime_safety AS (
         LOWER(TRIM(city)) AS city,
         crime_index,
         safety_index
-    FROM {{ ref('stg_Data_cleaned__Crime_safety_index_final_table') }}
+    FROM {{ ref('Crime_safety_without_null') }}
 ),
 
 bonheur AS (

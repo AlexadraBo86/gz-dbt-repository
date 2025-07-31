@@ -36,6 +36,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
+
   intermediate:
     # Applies to all files under models/example/
       +materialized: political_and_safety_factors

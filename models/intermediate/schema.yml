@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: int_income_tax_cost_of_living
+    description: >
+      Modèle intermédiaire fusionnant les données de coût de la vie par ville et les données fiscales par pays,
+      restreint aux 36 villes cibles du projet Z_Score. Ce modèle supprime les doublons éventuels sur les couples (Country, City)
+      en conservant une seule ligne par ville après jointure.
+    columns:
+      - name: City
+        description: "Nom de la ville (nettoyé si nécessaire, ex: 'New York, NY' → 'New York')"
+        tests:
+          - not_null
+
+      - name: Country
+        description: "Nom standardisé du pays correspondant à la ville"
+        tests:
+          - not_null
+
+      - name: Cost_of_Living_Index
+        description: "Indice du coût de la vie hors loyer (base 100 = New York)"
+
+      - name: Rent_Index
+        description: "Indice du coût moyen des loyers"
+
+      - name: Cost_of_Living_Plus_Rent_Index
+        description: "Indice combiné du coût de la vie + loyers"
+
+      - name: Groceries_Index
+        description: "Indice des prix des produits alimentaires"
+
+      - name: Restaurant_Price_Index
+        description: "Indice des prix en restaurant"
+
+      - name: Local_Purchasing_Power_Index
+        description: "Pouvoir d’achat local estimé pour les résidents"
+
+      - name: Year
+        description: "Année de référence des données fiscales (ex: 2024)"
+        tests:
+          - not_null
+
+      - name: income_tax_rate
+        description: "Taux moyen d'imposition sur le revenu (ex: 0.37 pour 37%)"
+        tests:
+          - not_null
+
+      - name: gdp_per_capita_usd_2023
+        description: "Produit Intérieur Brut par habitant (en USD, année 2023)"
+        tests:
+          - not_null

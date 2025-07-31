@@ -27,14 +27,19 @@ crime_safety AS (
 
 bonheur AS (
     SELECT
-        country,
         city,
+        country,
         year,
         rank,
+        ladder_score,
+        upperwhisker,
+        lowerwhisker,
+        social_support,
+        freedom_to_make_life_choices,
+        generosity,
         perceptions_of_corruption,
         dystopia_residual
-    FROM {{ ref('mesure_bonheur_country_2024_clean') }}
-    WHERE year = 2024  -- Filtrer uniquement 2024 si pertinent
+    FROM {{ ref('stg_Data_cleaned__mesure_bonheur_country_2024_clean') }}
 )
 
 SELECT
@@ -58,9 +63,7 @@ SELECT
     bonheur.ladder_score,
     bonheur.upperwhisker,
     bonheur.lowerwhisker,
-    bonheur.log_gdp_per_capita,
     bonheur.social_support,
-    bonheur.healthy_life_expectancy,
     bonheur.freedom_to_make_life_choices,
     bonheur.generosity,
     bonheur.perceptions_of_corruption,

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: final_otmane_score
+  - name: otmane_economics_score
     description: >
       Modèle final d’Otmane avec les 36 villes sélectionnées,
       regroupant les indicateurs économiques clés. Ce modèle est destiné à être

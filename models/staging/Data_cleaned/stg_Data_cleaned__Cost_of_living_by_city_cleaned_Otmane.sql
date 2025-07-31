@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('Data_cleaned', 'Cost_of_living_by_city_cleaned_Otmane') }}
+    select * from {{ ref('stg_Data_cleaned__Cost_of_living_by_city_cleaned_Otmane') }}
 
 ),
 

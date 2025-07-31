@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('Data_cleaned', 'Crime_safety_index_final_table') }}
+    select * from {{ ref('stg_Data_cleaned__Crime_safety_index_final_table') }}
 
 ),
 

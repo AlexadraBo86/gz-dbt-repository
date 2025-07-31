@@ -5,7 +5,143 @@ sources:
     database: z-score-467307
     schema: Data_cleaned
     tables:
+
       - name: Traffic_index_by_city_cleaned
       - name: temperature_ville_cleaned
       - name: Linguistic_diversity_index_by_country_cleaned
       - name: access_to_internet_country_cleaned
+
+      - name: Crime_safety_index_final_table
+      - name: IDH_by_country_final_table
+      - name: Cost_of_living_by_city_cleaned_Otmane
+      - name: corruption_estimated_final_table
+      - name: mesure_bonheur_country_2024_clean
+models:
+  - name: otmane_economics_score
+    description: >
+      Modèle final d’Otmane avec les 36 villes sélectionnées,
+      regroupant les indicateurs économiques clés. Ce modèle est destiné à être
+      visualisé dans Looker Studio ou utilisé comme base pour le calcul du Z_Score.
+    columns:
+      - name: Year
+        description: "Année de référence des données fiscales (ex : 2024)"
+        tests:
+          - not_null
+
+      - name: income_tax_rate
+        description: "Taux moyen d’imposition sur le revenu dans le pays (ex : 0.37 pour 37%)"
+
+      - name: gdp_per_capita
+        description: "Produit Intérieur Brut par habitant en USD (alias de gdp_per_capita_usd_2023)"
+        tests:
+          - not_null
+
+      - name: Country
+        description: "Nom standardisé du pays"
+        tests:
+          - not_null
+
+      - name: City
+        description: "Nom nettoyé de la ville"
+        tests:
+          - not_null
+
+      - name: Cost_of_Living_Index
+        description: "Indice du coût de la vie (base 100 = New York, sans loyer)"
+
+      - name: Rent_Index
+        description: "Indice du coût des loyers"
+
+      - name: Cost_of_Living_Plus_Rent_Index
+        description: "Indice composite coût de la vie + loyer"
+
+      - name: Groceries_Index
+        description: "Indice des prix des produits alimentaires"
+
+      - name: Restaurant_Price_Index
+        description: "Indice des prix en restaurant"
+
+      - name: Local_Purchasing_Power_Index
+        description: "Indice du pouvoir d’achat local théorique"
+  - name: int_income_tax_cost_of_living
+    description: >
+      Modèle intermédiaire fusionnant les données de coût de la vie par ville et les données fiscales par pays,
+      restreint aux 36 villes cibles du projet Z_Score. Ce modèle supprime les doublons éventuels sur les couples (Country, City)
+      en conservant une seule ligne par ville après jointure.
+    columns:
+      - name: City
+        description: "Nom de la ville (nettoyé si nécessaire, ex: 'New York, NY' → 'New York')"
+        tests:
+          - not_null
+
+      - name: Country
+        description: "Nom standardisé du pays correspondant à la ville"
+        tests:
+          - not_null
+
+      - name: Cost_of_Living_Index
+        description: "Indice du coût de la vie hors loyer (base 100 = New York)"
+
+      - name: Rent_Index
+        description: "Indice du coût moyen des loyers"
+
+      - name: Cost_of_Living_Plus_Rent_Index
+        description: "Indice combiné du coût de la vie + loyers"
+
+      - name: Groceries_Index
+        description: "Indice des prix des produits alimentaires"
+
+      - name: Restaurant_Price_Index
+        description: "Indice des prix en restaurant"
+
+      - name: Local_Purchasing_Power_Index
+        description: "Pouvoir d’achat local estimé pour les résidents"
+
+      - name: Year
+        description: "Année de référence des données fiscales (ex: 2024)"
+        tests:
+          - not_null
+
+      - name: income_tax_rate
+        description: "Taux moyen d'imposition sur le revenu (ex: 0.37 pour 37%)"
+        tests:
+          - not_null
+
+      - name: gdp_per_capita_usd_2023
+        description: "Produit Intérieur Brut par habitant (en USD, année 2023)"
+        tests:
+          - not_null
+  - name: stg_income_tax_2024
+    description: "Staging model for income tax rate and GDP per capita data for the year 2024, with country name normalization."
+    columns:
+      - name: Country
+        description: "Standardized country name matching cost of living data"
+        tests:
+          - not_null
+      - name: Year
+        description: "Year of the fiscal data (2024)"
+        tests:
+          - not_null
+      - name: Income_tax_rate
+        description: "Income tax rate (as a float: 0.37 = 37%)"
+        tests:
+          - not_null
+      - name: gdp_per_capita_usd_2023
+        description: "GDP per capita in USD (2023 data used in 2024)"
+        tests:
+          - not_null
+
+  - name: stg_cost_of_living_by_city_cleaned_Otmane
+    description: "Staging model for cost of living indicators by city, with city name cleaning (ex: New York, NY → New York)."
+    columns:
+      - name: Country
+        description: "Country where the city is located"
+        tests:
+          - not_null
+      - name: City
+        description: "Cleaned city name"
+        tests:
+          - not_null
+      - name: Cost_of_Living_Index
+        description: "Cost of living index (base 100 = New York)"
+

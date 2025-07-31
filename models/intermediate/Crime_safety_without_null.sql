@@ -2,7 +2,7 @@
 
 with source as (
     select * 
-    from {{ source('Data_cleaned', 'Crime_safety_index_final_table') }}
+    from {{ ref('Crime_safety') }}
 ),
 
 renamed as (

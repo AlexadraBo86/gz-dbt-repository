@@ -26,7 +26,7 @@ pollution AS (
 bonheur AS (
     SELECT
         *
-    FROM {{ ref('stg_data_cleaned__mesure_bonheur_country_2024_clean') }}
+    FROM {{ ref('stg_Data_cleaned__mesure_bonheur_country_2024_clean') }}
 )
 
 

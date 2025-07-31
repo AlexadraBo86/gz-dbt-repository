@@ -15,7 +15,14 @@ corruption AS (
         corruption_index
     FROM {{ ref('stg_Data_cleaned__corruption_estimated_final_table') }}
 )
-),
+,
+crime_safety AS (
+    SELECT
+        LOWER(TRIM(country)) AS country,
+        LOWER(TRIM(city)) AS city,
+        crime_index,
+        safety_index
+    FROM {{ ref('Crime_safety') }}
 
 bonheur AS (
     SELECT

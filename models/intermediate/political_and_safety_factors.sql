@@ -2,24 +2,24 @@
 
 WITH idh AS (
     SELECT
-        country,
+        LOWER(TRIM(country)) AS country,
         hdi,
         ihdi,
         overall_loss_due_to_inequality_perc
-    FROM {{ ref('stg_Data_cleaned__IDH_by_country_final_table') }}     
+    FROM {{ ref('stg_Data_cleaned__IDH_by_country_final_table') }}
 ),
 
 corruption AS (
     SELECT
-        country,
+        LOWER(TRIM(country)) AS country,
         corruption_index
     FROM {{ ref('stg_Data_cleaned__corruption_estimated_final_table') }}
 ),
 
 crime_safety AS (
     SELECT
-        country,
-        city,
+        LOWER(TRIM(country)) AS country,
+        LOWER(TRIM(city)) AS city,
         crime_index,
         safety_index
     FROM {{ ref('stg_Data_cleaned__Crime_safety_index_final_table') }}
@@ -27,8 +27,8 @@ crime_safety AS (
 
 bonheur AS (
     SELECT
-        city,
-        country,
+        LOWER(TRIM(country)) AS country,
+        LOWER(TRIM(city)) AS city,
         year,
         rank,
         ladder_score,
@@ -45,20 +45,12 @@ bonheur AS (
 SELECT
     idh.country,
     crime_safety.city,
-    
-    -- Indicateurs IDH
     idh.hdi,
     idh.ihdi,
     idh.overall_loss_due_to_inequality_perc,
-
-    -- Corruption
     corruption.corruption_index,
-
-    -- Criminalité
     crime_safety.crime_index,
     crime_safety.safety_index,
-
-    -- Bonheur
     bonheur.rank,
     bonheur.ladder_score,
     bonheur.upperwhisker,

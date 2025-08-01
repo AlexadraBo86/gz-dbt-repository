@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ ref('stg_Data_cleaned__mesure_bonheur_country_2024_clean') }}
+    select * from {{ ref('stg_mesure_bonheur_country_2024') }}
 
 ),
 

@@ -143,4 +143,44 @@ models:
           - not_null
       - name: Cost_of_Living_Index
         description: "Cost of living index (base 100 = New York)"
+  - name: stg_mesure_bonheur_country_2024
+    description: >
+      Modèle staging basé sur la table BigQuery `mesure_bonheur_country_2024_clean`,
+      qui contient les scores de bien-être par pays et ville pour l’année 2024. 
+      Ce modèle renomme les colonnes en minuscule et normalise les noms.
+    columns:
+      - name: country
+        description: "Pays concerné"
+        tests:
+          - not_null
+      - name: city
+        description: "Ville concernée"
+        tests:
+          - not_null
+      - name: year
+        description: "Année de référence (2024)"
+        tests:
+          - not_null
+      - name: rank
+        description: "Classement de bonheur"
+      - name: ladder_score
+        description: "Score de bien-être (ladder)"
+      - name: upperwhisker
+        description: "Intervalle supérieur"
+      - name: lowerwhisker
+        description: "Intervalle inférieur"
+      - name: log_gdp_per_capita
+        description: "Logarithme du PIB par habitant"
+      - name: social_support
+        description: "Score de soutien social"
+      - name: healthy_life_expectancy
+        description: "Espérance de vie en bonne santé"
+      - name: freedom_to_make_life_choices
+        description: "Score de liberté de choix de vie"
+      - name: generosity
+        description: "Score de générosité"
+      - name: perceptions_of_corruption
+        description: "Score de perception de la corruption"
+      - name: dystopia_residual
+        description: "Score résiduel (dystopie)"
 

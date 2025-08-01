@@ -7,6 +7,9 @@ sources:
     tables:
 
       - name: Traffic_index_by_city_cleaned
+      - name: pollution_index_city_clean
+      - name: healthcare_index_city_clean
+      - name: life_expectancy_at_birth_country_clean
       - name: temperature_ville_cleaned
       - name: Linguistic_diversity_index_by_country_cleaned
       - name: access_to_internet_country_cleaned

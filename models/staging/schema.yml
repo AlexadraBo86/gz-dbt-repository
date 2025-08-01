@@ -1,8 +1,0 @@
-sources:
-  - name: data_cleaned
-    database: z-score-467307
-    schema: Data_cleaned
-    tables:
-      - name: pollution_index_city_clean
-      - name: healthcare_index_city_clean
-      - name: life_expectancy_at_birth_country_clean
